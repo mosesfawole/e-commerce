@@ -1,6 +1,10 @@
-import React, { useEffect } from "react";
-import products from "../lib/product";
+import React, { useEffect, useState } from "react";
+import products, { images } from "../lib/product";
 const Product = () => {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    console.log(images);
+  });
   return (
     <div>
       {products.map((product) => (
@@ -10,11 +14,15 @@ const Product = () => {
               <img
                 className="w-full"
                 loading="lazy"
-                src={product.thumnail}
+                src={images && images[index]}
                 alt={product.name}
               />
             </div>
-            <div className="small"></div>
+            <div className="small">
+              {images?.map((item, i) => (
+                <img key={i} src={item} />
+              ))}
+            </div>
           </div>
           <div className="texts p-6">
             <p className="title leading-8 text-sm font-bold uppercase text-[#ff7d1a] ">

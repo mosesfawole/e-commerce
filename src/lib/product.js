@@ -1,8 +1,7 @@
 import Thumbnail from "../images/image-product-1-thumbnail.jpg";
 import FirstImage from "../images/image-product-2-thumbnail.jpg";
-import SecondImage from "../images/image-product-2-thumbnail.jpg";
-import ThirdImage from "../images/image-product-3-thumbnail.jpg";
-import FourthImage from "../images/image-product-4-thumbnail.jpg";
+import SecondImage from "../images/image-product-3-thumbnail.jpg";
+import ThirdImage from "../images/image-product-4-thumbnail.jpg";
 
 const products = [
   {
@@ -13,12 +12,8 @@ const products = [
     price: (125.0).toFixed(2),
     discount: 50,
     initialPrice: (250.0).toFixed(2),
-    thumnail: Thumbnail,
-    image1: FirstImage,
-    image2: SecondImage,
-    image3: ThirdImage,
-    image4: FourthImage,
   },
 ];
+export const images = [Thumbnail, FirstImage, SecondImage, ThirdImage];
 
 export default products;
