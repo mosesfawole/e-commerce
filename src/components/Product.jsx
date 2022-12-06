@@ -20,7 +20,7 @@ const Product = () => {
             </div>
             <div className="small">
               {images?.map((item, i) => (
-                <img key={i} src={item} />
+                <img key={i} src={item} alt={i} />
               ))}
             </div>
           </div>
