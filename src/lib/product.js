@@ -3,7 +3,7 @@ import FirstImage from "../images/image-product-2-thumbnail.jpg";
 import SecondImage from "../images/image-product-3-thumbnail.jpg";
 import ThirdImage from "../images/image-product-4-thumbnail.jpg";
 
-const products = [
+export const products = [
   {
     title: "sneaker company",
     name: "fall limited edition sneakers",
@@ -15,5 +15,3 @@ const products = [
   },
 ];
 export const images = [Thumbnail, FirstImage, SecondImage, ThirdImage];
-
-export default products;

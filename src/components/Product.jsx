@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import products, { images } from "../lib/product";
+import { products, images } from "../lib/product";
+import Plus from "../images/icon-plus.svg";
+import Minus from "../images/icon-minus.svg";
+import CartIcon from "../images/icon-cart.svg";
 const Product = () => {
   const [index, setIndex] = useState(0);
+  const [quantity, setQuantity] = useState(0);
   useEffect(() => {
     console.log(images);
   });
@@ -47,6 +51,29 @@ const Product = () => {
                 </span>
               </div>
             </div>
+          </div>
+          <div className="buttons flex flex-col justify-center">
+            <button className="flex justify-evenly p-2 rounded-md bg-[#f7f8fd]">
+              <span>
+                <img src={Minus} alt="minus" />
+              </span>
+              <p>{quantity}</p>
+              <span>
+                <img src={Plus} alt="plus" />
+              </span>
+            </button>
+            <button
+              className="flex items-center gap-4 justify-center mt-4 rounded-md bg-[#ff7d1a] text-white font-bold"
+              type="button"
+            >
+              {/* <CartIcon /> */}
+              <img
+                className="fill-current text-white"
+                src={CartIcon}
+                alt="cart-icon"
+              />
+              Add to Cart
+            </button>
           </div>
         </div>
       ))}
