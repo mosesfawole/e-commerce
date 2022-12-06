@@ -6,9 +6,15 @@ import CartIcon from "../images/icon-cart.svg";
 const Product = () => {
   const [index, setIndex] = useState(0);
   const [quantity, setQuantity] = useState(0);
-  useEffect(() => {
-    console.log(images);
-  });
+
+  function incQuantity() {
+    setQuantity(quantity + 1);
+  }
+  function decQuantity() {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  }
   return (
     <div>
       {products.map((product) => (
@@ -53,15 +59,15 @@ const Product = () => {
             </div>
           </div>
           <div className="buttons flex flex-col justify-center">
-            <button className="flex justify-evenly p-2 rounded-md bg-[#f7f8fd]">
-              <span>
+            <div className="flex justify-evenly p-2 rounded-md bg-[#f7f8fd]">
+              <button type="button" onClick={decQuantity}>
                 <img src={Minus} alt="minus" />
-              </span>
+              </button>
               <p>{quantity}</p>
-              <span>
+              <button type="button" onClick={incQuantity}>
                 <img src={Plus} alt="plus" />
-              </span>
-            </button>
+              </button>
+            </div>
             <button
               className="flex items-center gap-4 justify-center mt-4 rounded-md bg-[#ff7d1a] text-white font-bold"
               type="button"
