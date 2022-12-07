@@ -58,7 +58,7 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <div className="buttons flex flex-col justify-center">
+          <div className="buttons flex p-8 flex-col justify-center">
             <div className="flex justify-evenly p-2 rounded-md bg-[#f7f8fd]">
               <button type="button" onClick={decQuantity}>
                 <img src={Minus} alt="minus" />
@@ -69,7 +69,7 @@ const Product = () => {
               </button>
             </div>
             <button
-              className="flex items-center gap-4 justify-center mt-4 rounded-md bg-[#ff7d1a] text-white font-bold"
+              className="flex items-center gap-4 justify-center mt-4 p-3 rounded-md bg-[#ff7d1a] text-white font-bold"
               type="button"
             >
               {/* <CartIcon /> */}
