@@ -33,7 +33,12 @@ const Product = () => {
             </div>
             <div className="small">
               {images?.map((item, i) => (
-                <img key={i} src={item} alt={i} />
+                <img
+                  key={i}
+                  src={item}
+                  alt={i}
+                  onMouseEnter={() => setIndex(i)}
+                />
               ))}
             </div>
           </div>
