@@ -3,6 +3,8 @@ import { products, images } from "../lib/product";
 import Plus from "../images/icon-plus.svg";
 import Minus from "../images/icon-minus.svg";
 import CartIcon from "../images/icon-cart.svg";
+
+import { Swiper, SwiperSlide } from "swiper/react";
 const Product = () => {
   const [index, setIndex] = useState(0);
   const [quantity, setQuantity] = useState(0);
@@ -31,6 +33,27 @@ const Product = () => {
                   src={images && images[index]}
                   alt={product.name}
                 />
+              </div>
+              <div className="md:hidden">
+                <Swiper
+                  spaceBetween={50}
+                  slidesPerView={1}
+                  onSlideChange={() => console.log("slide change")}
+                  onSwiper={(swiper) => console.log(swiper)}
+                >
+                  <SwiperSlide>
+                    <div className="small flex md:w-[25%] gap-8 md:ml-28 ">
+                      {images?.map((item, i) => (
+                        <img
+                          key={i}
+                          src={item}
+                          alt={i}
+                          className="rounded-lg w-1/4"
+                        />
+                      ))}
+                    </div>
+                  </SwiperSlide>
+                </Swiper>
               </div>
 
               <div className="texts flex flex-col md:basis-2/6 p-4">
@@ -89,7 +112,8 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="small flex md:w-[25%] gap-8 md:ml-28 ">
+
+            <div className="small hidden md:flex  md:w-[25%] gap-8 md:ml-28 ">
               {images?.map((item, i) => (
                 <img
                   key={i}
