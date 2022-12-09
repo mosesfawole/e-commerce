@@ -89,7 +89,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="small flex gap-4 p-4 ">
+            <div className="small flex md:w-[25%] gap-8 md:ml-28 ">
               {images?.map((item, i) => (
                 <img
                   key={i}
