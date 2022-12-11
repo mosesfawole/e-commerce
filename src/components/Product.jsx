@@ -4,7 +4,9 @@ import Plus from "../images/icon-plus.svg";
 import Minus from "../images/icon-minus.svg";
 import CartIcon from "../images/icon-cart.svg";
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+
 const Product = () => {
   const [index, setIndex] = useState(0);
   const [quantity, setQuantity] = useState(0);
@@ -26,7 +28,7 @@ const Product = () => {
         <div className="" key={product.name}>
           <div className="">
             <div className="main md:flex justify-evenly items-center">
-              <div className="md:basis-2/6">
+              <div className="hidden md:flex md:basis-2/6">
                 <img
                   className=" md:rounded-xl w-full md:h-1/2"
                   loading="lazy"
@@ -35,25 +37,46 @@ const Product = () => {
                 />
               </div>
               <div className="md:hidden">
-                <Swiper
-                  spaceBetween={50}
-                  slidesPerView={1}
-                  onSlideChange={() => console.log("slide change")}
-                  onSwiper={(swiper) => console.log(swiper)}
+                <Splide
+                  hasTrack={false}
+                  aria-label="..."
+                  options={{
+                    perPage: 1,
+
+                    drag: "free",
+                    type: "loop",
+                    breakpoints: {
+                      768: {
+                        perPage: 1,
+                      },
+                    },
+                  }}
                 >
-                  <SwiperSlide>
-                    <div className="small flex md:w-[25%] gap-8 md:ml-28 ">
-                      {images?.map((item, i) => (
-                        <img
-                          key={i}
-                          src={item}
-                          alt={i}
-                          className="rounded-lg w-1/4"
-                        />
-                      ))}
-                    </div>
-                  </SwiperSlide>
-                </Swiper>
+                  <SplideTrack>
+                    {/* <img
+                      className=" md:rounded-xl w-full md:h-1/2"
+                      loading="lazy"
+                      src={images && images[index]}
+                      alt={product.name}
+                    /> */}
+                    {/* <div className="small flex md:w-[25%] gap-8 md:ml-28 "> */}
+                    {images.map((item) => {
+                      return (
+                        <SplideSlide key={item}>
+                          <div className="">
+                            <img
+                              // key={index}
+                              src={item}
+                              alt={index}
+                              className="rounded-lg md:w-1/4 w-full"
+                            />
+                          </div>
+                        </SplideSlide>
+                      );
+                    })}
+                    {/* </div> */}
+                  </SplideTrack>
+                </Splide>
               </div>
 
               <div className="texts flex flex-col md:basis-2/6 p-4">
