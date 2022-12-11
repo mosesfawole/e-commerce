@@ -42,7 +42,7 @@ const Product = () => {
                   aria-label="..."
                   options={{
                     perPage: 1,
-
+                    pagination: false,
                     drag: "free",
                     type: "loop",
                     breakpoints: {
@@ -53,13 +53,6 @@ const Product = () => {
                   }}
                 >
                   <SplideTrack>
-                    {/* <img
-                      className=" md:rounded-xl w-full md:h-1/2"
-                      loading="lazy"
-                      src={images && images[index]}
-                      alt={product.name}
-                    /> */}
-                    {/* <div className="small flex md:w-[25%] gap-8 md:ml-28 "> */}
                     {images.map((item) => {
                       return (
                         <SplideSlide key={item}>
