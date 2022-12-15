@@ -1,18 +1,27 @@
-import React from "react";
+import { useState } from "react";
 import Logo from "../images/logo.svg";
 import CartIcon from "../images/icon-cart.svg";
 import Avatar from "../images/image-avatar.png";
 import MenuIcon from "../images/icon-menu.svg";
 import CloseIcon from "../images/icon-close.svg";
 const Header = () => {
+  const [isMenu, setIsMenu] = useState(false);
+
+  const handleMenu = () => {
+    setIsMenu(true);
+    console.log(isMenu);
+  };
+  const closeMenu = () => {
+    setIsMenu(false);
+  };
   return (
     <div className="">
       <div className="flex p-6 md:px-10 items-center">
         <div className="left flex flex-1 items-center md:gap-12 gap-4 ">
-          <div className="hamburger md:hidden">
+          <div className="hamburger md:hidden" onClick={handleMenu}>
             <img src={MenuIcon} alt="hamburger menu" />
           </div>
-          <div className="logo ">
+          <div className="logo">
             <img src={Logo} alt="logo" />
           </div>
           <div className="navs">
@@ -23,10 +32,10 @@ const Header = () => {
               <li>About</li>
               <li>Contact</li>
             </ul>
-            <div className="md:hiddden  ">
-              <div className="overlay fixed right-0 top-0 w-full h-full bg-[##00000091]"></div>
-              <div className="bg-white fixed left-0 top-0 p-6 w-[70%] h-full">
-                <div className="">
+            <div className={isMenu ? "block" : "hidden"}>
+              <div className="overlay fixed right-0 top-0 w-full z-30 h-full bg-[#00000091]"></div>
+              <div className="bg-white fixed left-0 top-0 p-6 z-30 w-[70%] h-full">
+                <div className="" onClick={closeMenu}>
                   <img src={CloseIcon} alt="close-icon" />
                 </div>
                 <ul className="font-bold mt-10 flex flex-col gap-4  text-md">
