@@ -115,7 +115,7 @@ const Product = () => {
                   <button
                     onClick={Popup}
                     className="flex w-full items-center gap-4 justify-center  p-3 rounded-lg  bg-[#ff7d1a]  text-white font-bold
-                    hover:shadow-2xl hover:opacity-60
+                    hover:shadow-2xl hover:opacity-80
                     "
                     type="button"
                   >
@@ -131,7 +131,7 @@ const Product = () => {
               </div>
             </div>
 
-            <div className="small hidden md:flex ml-24 md:w-[25%] gap-8  ">
+            <div className="small hidden md:flex ml-36 mt-10 md:w-[25%] gap-10  ">
               {images?.map((item, i) => (
                 <img
                   key={i}

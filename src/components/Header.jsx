@@ -4,6 +4,7 @@ import CartIcon from "../images/icon-cart.svg";
 import Avatar from "../images/image-avatar.png";
 import MenuIcon from "../images/icon-menu.svg";
 import CloseIcon from "../images/icon-close.svg";
+import list from "../lib/menu";
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
 
@@ -25,12 +26,17 @@ const Header = () => {
             <img src={Logo} alt="logo" />
           </div>
           <div className="navs">
-            <ul className="hidden md:flex gap-8">
-              <li className="cursor-pointer">Collections</li>
+            <ul className="hidden absolute top-[35px]  md:flex gap-8">
+              {list.map((item, index) => (
+                <li className="cursor-pointer" key={index}>
+                  {item}
+                </li>
+              ))}
+              {/* <li className="cursor-pointer">Collections</li>
               <li className="cursor-pointer">Men</li>
               <li className="cursor-pointer">Women</li>
               <li className="cursor-pointer">About</li>
-              <li className="cursor-pointer">Contact</li>
+              <li className="cursor-pointer">Contact</li> */}
             </ul>
             <div className={isMenu ? "block" : "hidden"}>
               <div className="overlay fixed right-0 top-0 w-full z-30 h-full bg-[#00000091]"></div>
