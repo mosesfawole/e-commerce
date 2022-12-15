@@ -61,7 +61,7 @@ const Product = () => {
                               // key={index}
                               src={item}
                               alt={index}
-                              className="rounded-lg md:w-1/4 w-full"
+                              className="md:w-1/4 w-full"
                             />
                           </div>
                         </SplideSlide>

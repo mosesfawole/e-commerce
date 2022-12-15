@@ -7,10 +7,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-body {
   font-family: "Kumbh Sans", sans-serif;
 }
+
 .splide__arrow {
   height: 3em;
   width: 3em;

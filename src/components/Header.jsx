@@ -3,6 +3,7 @@ import Logo from "../images/logo.svg";
 import CartIcon from "../images/icon-cart.svg";
 import Avatar from "../images/image-avatar.png";
 import MenuIcon from "../images/icon-menu.svg";
+import CloseIcon from "../images/icon-close.svg";
 const Header = () => {
   return (
     <div className="">
@@ -22,6 +23,18 @@ const Header = () => {
               <li>About</li>
               <li>Contact</li>
             </ul>
+            <div className="md:hiddden bg-white fixed left-0 top-0 p-6 w-[70%] h-full ">
+              <div className="">
+                <img src={CloseIcon} alt="close-icon" />
+              </div>
+              <ul className="font-bold mt-10 flex flex-col gap-4  text-md">
+                <li>Collections</li>
+                <li>Men</li>
+                <li>Women</li>
+                <li>About</li>
+                <li>Contact</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="right flex items-center md:justify-center justify-end gap-6">
