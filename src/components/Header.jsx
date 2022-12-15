@@ -26,11 +26,11 @@ const Header = () => {
           </div>
           <div className="navs">
             <ul className="hidden md:flex gap-8">
-              <li>Collections</li>
-              <li>Men</li>
-              <li>Women</li>
-              <li>About</li>
-              <li>Contact</li>
+              <li className="cursor-pointer">Collections</li>
+              <li className="cursor-pointer">Men</li>
+              <li className="cursor-pointer">Women</li>
+              <li className="cursor-pointer">About</li>
+              <li className="cursor-pointer">Contact</li>
             </ul>
             <div className={isMenu ? "block" : "hidden"}>
               <div className="overlay fixed right-0 top-0 w-full z-30 h-full bg-[#00000091]"></div>

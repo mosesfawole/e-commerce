@@ -114,7 +114,9 @@ const Product = () => {
                   </button>
                   <button
                     onClick={Popup}
-                    className="flex w-full items-center gap-4 justify-center  p-3 rounded-lg  bg-[#ff7d1a] text-white font-bold"
+                    className="flex w-full items-center gap-4 justify-center  p-3 rounded-lg  bg-[#ff7d1a]  text-white font-bold
+                    hover:shadow-2xl hover:opacity-60
+                    "
                     type="button"
                   >
                     {/* <CartIcon /> */}
@@ -129,13 +131,13 @@ const Product = () => {
               </div>
             </div>
 
-            <div className="small hidden md:flex  md:w-[25%] gap-8 md:ml-28 ">
+            <div className="small hidden md:flex ml-24 md:w-[25%] gap-8  ">
               {images?.map((item, i) => (
                 <img
                   key={i}
                   src={item}
                   alt={i}
-                  className="rounded-lg w-1/4"
+                  className="rounded-lg hover:opacity-50 cursor-pointer w-1/4"
                   onMouseEnter={() => setIndex(i)}
                 />
               ))}
