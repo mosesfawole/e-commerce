@@ -23,17 +23,20 @@ const Header = () => {
               <li>About</li>
               <li>Contact</li>
             </ul>
-            <div className="md:hiddden bg-white fixed left-0 top-0 p-6 w-[70%] h-full ">
-              <div className="">
-                <img src={CloseIcon} alt="close-icon" />
+            <div className="md:hiddden  ">
+              <div className="overlay fixed right-0 top-0 w-full h-full bg-[##00000091]"></div>
+              <div className="bg-white fixed left-0 top-0 p-6 w-[70%] h-full">
+                <div className="">
+                  <img src={CloseIcon} alt="close-icon" />
+                </div>
+                <ul className="font-bold mt-10 flex flex-col gap-4  text-md">
+                  <li>Collections</li>
+                  <li>Men</li>
+                  <li>Women</li>
+                  <li>About</li>
+                  <li>Contact</li>
+                </ul>
               </div>
-              <ul className="font-bold mt-10 flex flex-col gap-4  text-md">
-                <li>Collections</li>
-                <li>Men</li>
-                <li>Women</li>
-                <li>About</li>
-                <li>Contact</li>
-              </ul>
             </div>
           </div>
         </div>
