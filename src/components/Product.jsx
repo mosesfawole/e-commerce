@@ -20,7 +20,7 @@ const Product = () => {
     }
   };
   const Popup = () => {
-    alert("item added to cart");
+    alert(`${quantity} item added to cart`);
   };
   return (
     <div className="mt-12">

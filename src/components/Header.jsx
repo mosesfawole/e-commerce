@@ -22,7 +22,7 @@ const Header = () => {
           <div className="hamburger md:hidden" onClick={handleMenu}>
             <img src={MenuIcon} alt="hamburger menu" />
           </div>
-          <div className="logo">
+          <div className="logo cursor-pointer">
             <img src={Logo} alt="logo" />
           </div>
           <div className="navs">
@@ -56,10 +56,10 @@ const Header = () => {
           </div>
         </div>
         <div className="right flex items-center md:justify-center justify-end gap-6">
-          <div className="cart-icon">
+          <div className="cart-icon cursor-pointer">
             <img src={CartIcon} alt="cart-icon" />
           </div>
-          <div className="avatar w-1/4">
+          <div className="avatar cursor-pointer w-1/4">
             <img src={Avatar} alt="avatar" />
           </div>
         </div>
