@@ -5,8 +5,14 @@ import Avatar from "../images/image-avatar.png";
 import MenuIcon from "../images/icon-menu.svg";
 import CloseIcon from "../images/icon-close.svg";
 import list from "../lib/menu";
+import Cart from "./Cart";
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+
+  const toggleCart = () => {
+    setShowCart(!showCart);
+  };
 
   const handleMenu = () => {
     setIsMenu(true);
@@ -17,6 +23,7 @@ const Header = () => {
   };
   return (
     <div className="">
+      {showCart ? <Cart /> : ""}
       <div className="flex p-6 md:px-10 items-center">
         <div className="left flex flex-1 items-center md:gap-12 gap-4 ">
           <div className="hamburger md:hidden" onClick={handleMenu}>
@@ -56,7 +63,7 @@ const Header = () => {
           </div>
         </div>
         <div className="right flex items-center md:justify-center justify-end gap-6">
-          <div className="cart-icon cursor-pointer">
+          <div className="cart-icon cursor-pointer" onClick={toggleCart}>
             <img src={CartIcon} alt="cart-icon" />
           </div>
           <div className="avatar cursor-pointer w-1/4">
