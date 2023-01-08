@@ -5,6 +5,7 @@ import ThirdImage from "../images/image-product-4.jpg";
 
 export const products = [
   {
+    id: 1,
     title: "sneaker company",
     name: "fall limited edition sneakers",
     about:

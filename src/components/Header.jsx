@@ -6,20 +6,31 @@ import MenuIcon from "../images/icon-menu.svg";
 import CloseIcon from "../images/icon-close.svg";
 import list from "../lib/menu";
 import Cart from "./Cart";
+import { useSelector } from "react-redux";
+import { cartReducer } from "../redux/cartSlice";
+
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
-  const toggleCart = () => {
-    setShowCart(!showCart);
-  };
+  const cart = useSelector((state) => state.cart);
 
+  const getTotalQty = () => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.quantity;
+    });
+    return total;
+  };
   const handleMenu = () => {
     setIsMenu(true);
     console.log(isMenu);
   };
   const closeMenu = () => {
     setIsMenu(false);
+  };
+  const toggleCart = () => {
+    setShowCart(!showCart);
   };
   return (
     <div className="">
@@ -64,6 +75,7 @@ const Header = () => {
         </div>
         <div className="right flex items-center md:justify-center justify-end gap-6">
           <div className="cart-icon cursor-pointer" onClick={toggleCart}>
+            <p>{getTotalQty() || 0}</p>
             <img src={CartIcon} alt="cart-icon" />
           </div>
           <div className="avatar cursor-pointer w-1/4">
