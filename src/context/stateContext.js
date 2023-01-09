@@ -30,4 +30,5 @@ export const StateContext = ({ children }) => {
 
     setCartItems([...cartItems, { ...product }]);
   }
+  console.log(`${qty} ${product.name} added to the cart`);
 };
