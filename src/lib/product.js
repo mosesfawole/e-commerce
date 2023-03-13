@@ -16,7 +16,7 @@ const products = [
   },
 ];
 
-function getProductId(id) {
+function getProductData(id) {
   let productData = products.find((product) => product.id === id);
   if (productData == undefined) {
     console.log("Product data does not exist for ID: " + id);
@@ -27,4 +27,4 @@ function getProductId(id) {
 
 export const images = [Thumbnail, FirstImage, SecondImage, ThirdImage];
 
-export { products, getProductId };
+export { products, getProductData };
