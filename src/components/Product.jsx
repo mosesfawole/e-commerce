@@ -9,12 +9,11 @@ import "@splidejs/react-splide/css";
 
 const Product = () => {
   const [index, setIndex] = useState(0);
-  const [quantity, setQuantity] = useState(0);
 
   return (
     <div className="mt-12">
       {products.map((product) => (
-        <div className="" key={product.name}>
+        <div className="" key={product.id}>
           <div className="">
             <div className="main md:flex justify-evenly items-center">
               <div className="hidden md:flex md:basis-2/6">
