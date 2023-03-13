@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { products, images } from "../lib/product";
 import Plus from "../images/icon-plus.svg";
 import Minus from "../images/icon-minus.svg";
@@ -11,17 +11,6 @@ const Product = () => {
   const [index, setIndex] = useState(0);
   const [quantity, setQuantity] = useState(0);
 
-  const incQuantity = () => {
-    setQuantity(quantity + 1);
-  };
-  const decQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
-  };
-  const Popup = () => {
-    alert(`${quantity} item added to cart`);
-  };
   return (
     <div className="mt-12">
       {products.map((product) => (
@@ -104,16 +93,15 @@ const Product = () => {
                 </div>
                 <div className="buttons md:mt-4 flex mt-4 md:px-0 flex-col md:flex-row gap-4   ">
                   <button className="flex justify-between items-center w-full p-3  rounded-lg bg-[#f7f8fd]">
-                    <span onClick={decQuantity}>
+                    {/* <span onClick={decQuantity}>
                       <img src={Minus} alt="minus" />
-                    </span>
-                    <p className="font-bold">{quantity}</p>
-                    <span onClick={incQuantity}>
+                    </span> */}
+                    <p className="font-bold"></p>
+                    {/* <span onClick={incQuantity}>
                       <img src={Plus} alt="plus" />
-                    </span>
+                    </span> */}
                   </button>
                   <button
-                    onClick={Popup}
                     className="flex w-full items-center gap-4 justify-center  p-3 rounded-lg  bg-[#ff7d1a]  text-white font-bold
                     hover:shadow-2xl hover:opacity-80
                     "

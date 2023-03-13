@@ -6,21 +6,13 @@ import MenuIcon from "../images/icon-menu.svg";
 import CloseIcon from "../images/icon-close.svg";
 import list from "../lib/menu";
 import Cart from "./Cart";
-import { useSelector } from "react-redux";
-import { cartReducer } from "../redux/cartSlice";
 
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
-  const cart = useSelector((state) => state.cart);
-
-  const getTotalQty = () => {
-    let total = 0;
-    cart.forEach((item) => {
-      total += item.quantity;
-    });
-    return total;
+  const handleClickOutside = () => {
+    setShowCart(false);
   };
   const handleMenu = () => {
     setIsMenu(true);
@@ -32,6 +24,7 @@ const Header = () => {
   const toggleCart = () => {
     setShowCart(!showCart);
   };
+
   return (
     <div className="">
       {showCart ? <Cart /> : ""}
@@ -50,11 +43,6 @@ const Header = () => {
                   {item}
                 </li>
               ))}
-              {/* <li className="cursor-pointer">Collections</li>
-              <li className="cursor-pointer">Men</li>
-              <li className="cursor-pointer">Women</li>
-              <li className="cursor-pointer">About</li>
-              <li className="cursor-pointer">Contact</li> */}
             </ul>
             <div className={isMenu ? "block" : "hidden"}>
               <div className="overlay fixed right-0 top-0 w-full z-30 h-full bg-[#00000091]"></div>
@@ -75,7 +63,7 @@ const Header = () => {
         </div>
         <div className="right flex items-center md:justify-center justify-end gap-6">
           <div className="cart-icon cursor-pointer" onClick={toggleCart}>
-            <p>{getTotalQty() || 0}</p>
+            <p></p>
             <img src={CartIcon} alt="cart-icon" />
           </div>
           <div className="avatar cursor-pointer w-1/4">
