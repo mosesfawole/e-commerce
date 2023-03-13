@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 import { products, getProductData } from "../lib/product";
 
-const CartContext = createContext({
+export const CartContext = createContext({
   items: [],
   getProductQuantity: () => {},
   addOneToCart: () => {},
@@ -11,7 +11,7 @@ const CartContext = createContext({
   getTotalCost: () => {},
 });
 
-export const CartProvider = ({ children }) => {
+export function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
 
   // { id: 1}
@@ -90,6 +90,6 @@ export const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
-};
+}
 
 export default CartProvider;
