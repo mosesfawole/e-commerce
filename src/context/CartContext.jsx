@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-hot-toast";
 
 import { products, getProductData } from "../lib/product";
 
@@ -51,13 +52,14 @@ export function CartProvider({ children }) {
         )
       );
     }
+    toast.success(` item(s) added to cart`);
   }
 
   const removeOneFromCart = (id) => {
     const quantity = getProductQuantity(id);
-
-    if (quantity === 1) {
+    if (quantity === 1 || quantity === 0) {
       deleteFromCart(id);
+      toast.error(` no item in cart`);
     } else {
       setCartProducts(
         cartProducts.map((product) =>
@@ -66,6 +68,7 @@ export function CartProvider({ children }) {
             : product
         )
       );
+      toast.success("item removed");
     }
   };
 

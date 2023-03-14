@@ -7,23 +7,16 @@ import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import { toast } from "react-hot-toast";
 
 function ProductCard(props) {
   const { product } = props;
 
   const [index, setIndex] = useState(0);
-  const [isInCart, setIsInCart] = useState(false);
   // const images = products.map((product) => product.images);
   const cart = useContext(CartContext);
   const productQuantity = cart.getProductQuantity(product.id);
 
-  useEffect(() => {
-    if (productQuantity > 0) {
-      setIsInCart(true);
-    } else {
-      setIsInCart(false);
-    }
-  });
   return (
     <div className="mt-12">
       <div className="">
@@ -127,14 +120,18 @@ function ProductCard(props) {
                 <div className="flex justify-between items-center w-1/2 p-3  rounded-lg bg-[#f7f8fd]">
                   <span
                     className="cursor-pointer"
-                    onClick={() => cart.removeOneFromCart(product.id)}
+                    onClick={() => {
+                      cart.removeOneFromCart(product.id);
+                    }}
                   >
                     <img src={Minus} alt="minus" />
                   </span>
                   <p className="font-bold">{productQuantity}</p>
                   <span
                     className="cursor-pointer"
-                    onClick={() => cart.addOneToCart(product.id)}
+                    onClick={() => {
+                      cart.addOneToCart(product.id);
+                    }}
                   >
                     <img src={Plus} alt="plus" />
                   </span>
@@ -145,7 +142,6 @@ function ProductCard(props) {
                     hover:shadow-2xl hover:opacity-80
                     "
                   type="button"
-                  disabled={isInCart}
                   onClick={() => cart.addOneToCart(product.id)}
                 >
                   {/* <CartIcon /> */}
