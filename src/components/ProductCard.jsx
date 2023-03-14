@@ -85,7 +85,7 @@ function ProductCard(props) {
               </Splide>
             </div>
 
-            <div className="texts flex flex-col md:w-2/5 p-4">
+            <div className="texts grid md:w-2/5 p-4">
               <p className="title leading-8 md:leading-10 text-sm font-bold uppercase text-[#ff7d1a] ">
                 {product.title}
               </p>
