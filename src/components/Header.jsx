@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import Logo from "../images/logo.svg";
 import CartIcon from "../images/icon-cart.svg";
 import Avatar from "../images/image-avatar.png";
@@ -16,9 +16,7 @@ const Header = () => {
     (sum, product) => sum + product.quantity,
     0
   );
-  const handleClickOutside = () => {
-    setShowCart(false);
-  };
+
   const handleMenu = () => {
     setIsMenu(true);
     console.log(isMenu);

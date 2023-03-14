@@ -123,7 +123,7 @@ function ProductCard(props) {
                   ${product.initialPrice}
                 </span>
               </div>
-              <div className="buttons md:mt-4 flex mt-4 md:px-0 flex-col md:flex-row gap-4   ">
+              <div className="buttons md:mt-4 flex mt-4 items-center md:px-0 flex-col md:flex-row gap-4   ">
                 <div className="flex justify-between items-center w-1/2 p-3  rounded-lg bg-[#f7f8fd]">
                   <span
                     className="cursor-pointer"
