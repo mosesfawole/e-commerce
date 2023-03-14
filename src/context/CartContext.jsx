@@ -30,13 +30,14 @@ export function CartProvider({ children }) {
     const quantity = getProductQuantity(id);
     const name = products.map((product) => product.name);
     const image = products.map((product, idx) => product.images[idx]);
-
+    const price = products.map((product) => product.price);
     if (quantity === 0) {
       setCartProducts([
         ...cartProducts,
         {
           name: name,
           image: image,
+          price: price,
           id: id,
           quantity: 1,
         },
