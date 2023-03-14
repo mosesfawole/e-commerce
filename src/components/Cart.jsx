@@ -19,24 +19,28 @@ const Cart = () => {
         {productsCount > 0 ? (
           <>
             {cartItems.map((item) => (
-              <div key={item.id}>
-                <div className="flex gap-2">
+              <div className="flex flex-col gap-4" key={item.id}>
+                <div className="flex items-center gap-2">
                   <div className="w-1/5">
                     {/* image */}
-                    <img src={item.image} className="w-1/5" alt="image" />
+                    <img
+                      src={item.image}
+                      className="rounded-[4px]"
+                      alt="image"
+                    />
                   </div>
-                  <div className="text-[#68707d] text-[12px]">
+                  <div className="flex flex-col w-full text-[#68707d] text-[12px]">
                     <p className="capitalize ">{item.name}</p>
                     <p>
-                      {item.price}* {item.quantity}{" "}
+                      ${item.price} x {item.quantity}{" "}
                       <span className="text-black font-bold">
-                        {cart.getTotalCost().toFixed(2)}
+                        ${cart.getTotalCost().toFixed(2)}
                       </span>
                     </p>
                   </div>
                   <div
                     className="del cursor-pointer"
-                    onClick={() => cart.deleteFromCart(product.id)}
+                    onClick={() => cart.deleteFromCart(item.id)}
                   >
                     <img src={Delete} alt="delete" />
                   </div>
