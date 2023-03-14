@@ -18,7 +18,7 @@ function ProductCard(props) {
   const productQuantity = cart.getProductQuantity(product.id);
 
   return (
-    <div className="mt-12">
+    <div className="md:mt-12">
       <div className="">
         <div className="">
           <div className="main md:flex  justify-evenly  ">

@@ -12,14 +12,14 @@ const Cart = () => {
   );
   console.log(cart.items);
   return (
-    <div className="cart fixed bg-white right-10 top-20 w-1/4  shadow-2xl rounded-md ">
+    <div className="cart fixed bg-white left-2 right-2 top-36 h-2/5 md:h-auto md:left-auto md:right-10 md:top-20 md:w-1/4 z-10  shadow-2xl rounded-md ">
       <h1 className="font-bold px-4 py-2">Cart</h1>
       <hr />
-      <div className="cartItems flex flex-col justify-center items-center gap-4  p-4">
+      <div className="cartItems flex flex-col justify-center items-center gap-4 p-4">
         {productsCount > 0 ? (
           <>
             {cartItems.map((item) => (
-              <div className="flex flex-col gap-4" key={item.id}>
+              <div className="flex flex-col gap-4 " key={item.id}>
                 <div className="flex items-center gap-2">
                   <div className="w-1/5">
                     {/* image */}
@@ -29,7 +29,7 @@ const Cart = () => {
                       alt="image"
                     />
                   </div>
-                  <div className="flex flex-col w-full text-[#68707d] text-[12px]">
+                  <div className="flex flex-col w-full text-[#68707d] md:text-xs">
                     <p className="capitalize ">{item.name}</p>
                     <p>
                       ${item.price} x {item.quantity}{" "}
@@ -46,14 +46,16 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <button className="rounded-lg w-full p-2 bg-[#ff7d1a] text-white text-xs  ">
+                <button className="rounded-lg w-full p-3 md:p-2 bg-[#ff7d1a] text-white md:text-xs  ">
                   Checkout
                 </button>
               </div>
             ))}
           </>
         ) : (
-          <>Your cart is empty</>
+          <div className="">
+            <p>Your cart is empty</p>
+          </div>
         )}
       </div>
     </div>
