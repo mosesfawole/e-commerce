@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { products, images } from "../lib/product";
+import { products } from "../lib/product";
 import Plus from "../images/icon-plus.svg";
 import Minus from "../images/icon-minus.svg";
 import CartIcon from "../images/icon-cart.svg";
@@ -13,6 +13,7 @@ function ProductCard(props) {
 
   const [index, setIndex] = useState(0);
   const [isInCart, setIsInCart] = useState(false);
+  // const images = products.map((product) => product.images);
   const cart = useContext(CartContext);
   const productQuantity = cart.getProductQuantity(product.id);
 
@@ -28,27 +29,32 @@ function ProductCard(props) {
       <div className="">
         <div className="">
           <div className="main md:flex  justify-evenly  ">
-            <div className="hidden md:flex md:flex-col md:w-1/3 gap-4  ">
-              <img
-                className=" md:rounded-xl "
-                loading="lazy"
-                src={images && images[index]}
-                alt={product.name}
-              />
-              <div className="small hidden md:grid grid-cols-4 gap-10  ">
-                {images?.map((item, i) => (
-                  <img
-                    key={i}
-                    src={item}
-                    alt={i}
-                    className={`${
-                      i === index ? "border  border-[#ff7d1a] opacity-50" : ""
-                    }  rounded-lg  cursor-pointer  `}
-                    onMouseEnter={() => setIndex(i)}
-                  />
-                ))}
+            {products.map((item) => (
+              <div
+                className="hidden md:flex md:flex-col md:w-1/3 gap-4"
+                key={item.id}
+              >
+                <img
+                  className=" md:rounded-xl "
+                  loading="lazy"
+                  src={item.images && item.images[index]}
+                  alt={product.name}
+                />
+                <div className="small hidden md:grid grid-cols-4 gap-10  ">
+                  {item.images?.map((item, i) => (
+                    <img
+                      key={i}
+                      src={item}
+                      alt={i}
+                      className={`${
+                        i === index ? "border  border-[#ff7d1a] opacity-50" : ""
+                      }  rounded-lg  cursor-pointer  `}
+                      onMouseEnter={() => setIndex(i)}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
+            ))}
             <div className="md:hidden">
               <Splide
                 hasTrack={false}
@@ -65,23 +71,25 @@ function ProductCard(props) {
                   },
                 }}
               >
-                <SplideTrack>
-                  {images.map((item) => {
-                    return (
-                      <SplideSlide key={item}>
-                        <div className="">
-                          <img
-                            // key={index}
-                            src={item}
-                            alt={index}
-                            className="md:w-1/4 w-full"
-                          />
-                        </div>
-                      </SplideSlide>
-                    );
-                  })}
-                  {/* </div> */}
-                </SplideTrack>
+                {products.map((item) => (
+                  <SplideTrack key={item.id}>
+                    {item.images.map((item) => {
+                      return (
+                        <SplideSlide key={item}>
+                          <div className="">
+                            <img
+                              // key={index}
+                              src={item}
+                              alt={index}
+                              className="md:w-1/4 w-full"
+                            />
+                          </div>
+                        </SplideSlide>
+                      );
+                    })}
+                    {/* </div> */}
+                  </SplideTrack>
+                ))}
               </Splide>
             </div>
 

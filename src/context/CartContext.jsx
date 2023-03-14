@@ -29,11 +29,14 @@ export function CartProvider({ children }) {
   function addOneToCart(id) {
     const quantity = getProductQuantity(id);
     const name = products.map((product) => product.name);
+    const image = images.map((product) => product[0]);
+
     if (quantity === 0) {
       setCartProducts([
         ...cartProducts,
         {
           name: name,
+          image: image,
           id: id,
           quantity: 1,
         },
