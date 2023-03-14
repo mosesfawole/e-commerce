@@ -23,7 +23,7 @@ const Cart = () => {
                 <div className="flex gap-2">
                   <div className="w-1/5">
                     {/* image */}
-                    <img src="" className="w-1/5" alt="image" />
+                    <img src={item.image} className="w-1/5" alt="image" />
                   </div>
                   <div className="text-[#68707d] text-[12px]">
                     <p className="capitalize ">{item.name}</p>

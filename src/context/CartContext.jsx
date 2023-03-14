@@ -29,7 +29,7 @@ export function CartProvider({ children }) {
   function addOneToCart(id) {
     const quantity = getProductQuantity(id);
     const name = products.map((product) => product.name);
-    const image = images.map((product) => product[0]);
+    const image = products.map((product, idx) => product.images[idx]);
 
     if (quantity === 0) {
       setCartProducts([
