@@ -10,7 +10,6 @@ const Cart = () => {
     (sum, product) => sum + product.quantity,
     0
   );
-  console.log(cart.items);
   return (
     <div className="cart fixed bg-white left-2 right-2 top-36 h-2/5 md:h-auto md:left-auto md:right-10 md:top-20 md:w-1/4 z-10  shadow-2xl rounded-md ">
       <h1 className="font-bold px-4 py-2">Cart</h1>

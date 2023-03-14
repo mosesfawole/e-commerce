@@ -13,7 +13,6 @@ function ProductCard(props) {
   const { product } = props;
 
   const [index, setIndex] = useState(0);
-  // const images = products.map((product) => product.images);
   const cart = useContext(CartContext);
   const productQuantity = cart.getProductQuantity(product.id);
 
