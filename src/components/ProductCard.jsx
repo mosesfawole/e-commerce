@@ -27,10 +27,10 @@ function ProductCard(props) {
     <div className="mt-12">
       <div className="">
         <div className="">
-          <div className="main md:flex justify-evenly items-center">
-            <div className="hidden md:flex md:basis-2/6">
+          <div className="main md:flex md:p-4  flex-wrap ">
+            <div className="hidden md:flex flex-1  ">
               <img
-                className=" md:rounded-xl w-full md:h-1/2"
+                className=" md:rounded-xl max-w-full "
                 loading="lazy"
                 src={images && images[index]}
                 alt={product.name}
@@ -72,7 +72,7 @@ function ProductCard(props) {
               </Splide>
             </div>
 
-            <div className="texts flex flex-col md:basis-2/6 p-4">
+            <div className="texts flex flex-col md:flex-1 p-4">
               <p className="title leading-8 md:leading-10 text-sm font-bold uppercase text-[#ff7d1a] ">
                 {product.title}
               </p>
@@ -103,27 +103,21 @@ function ProductCard(props) {
                 </span>
               </div>
               <div className="buttons md:mt-4 flex mt-4 md:px-0 flex-col md:flex-row gap-4   ">
-                {productQuantity > 0 ? (
-                  <>
-                    <div className="flex justify-between items-center w-full p-3  rounded-lg bg-[#f7f8fd]">
-                      <span
-                        className="cursor-pointer"
-                        onClick={() => cart.removeOneFromCart(product.id)}
-                      >
-                        <img src={Minus} alt="minus" />
-                      </span>
-                      <p className="font-bold">{productQuantity}</p>
-                      <span
-                        className="cursor-pointer"
-                        onClick={() => cart.addOneToCart(product.id)}
-                      >
-                        <img src={Plus} alt="plus" />
-                      </span>
-                    </div>
-                  </>
-                ) : (
-                  <></>
-                )}
+                <div className="flex justify-between items-center w-full p-3  rounded-lg bg-[#f7f8fd]">
+                  <span
+                    className="cursor-pointer"
+                    onClick={() => cart.removeOneFromCart(product.id)}
+                  >
+                    <img src={Minus} alt="minus" />
+                  </span>
+                  <p className="font-bold">{productQuantity}</p>
+                  <span
+                    className="cursor-pointer"
+                    onClick={() => cart.addOneToCart(product.id)}
+                  >
+                    <img src={Plus} alt="plus" />
+                  </span>
+                </div>
 
                 <button
                   className="flex w-full items-center gap-4 justify-center  p-3 rounded-lg  bg-[#ff7d1a]  text-white font-bold
@@ -143,20 +137,19 @@ function ProductCard(props) {
                 </button>
               </div>
             </div>
-          </div>
-
-          <div className="small hidden md:flex ml-36 mt-10 md:w-[25%] gap-10  ">
-            {images?.map((item, i) => (
-              <img
-                key={i}
-                src={item}
-                alt={i}
-                className={`${
-                  i === index ? "border  border-[#ff7d1a] opacity-50" : ""
-                }  rounded-lg  cursor-pointer w-1/4`}
-                onMouseEnter={() => setIndex(i)}
-              />
-            ))}
+            <div className="small hidden md:flex md:w-full gap-10  ">
+              {images?.map((item, i) => (
+                <img
+                  key={i}
+                  src={item}
+                  alt={i}
+                  className={`${
+                    i === index ? "border  border-[#ff7d1a] opacity-50" : ""
+                  }  rounded-lg  cursor-pointer w-1/6`}
+                  onMouseEnter={() => setIndex(i)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

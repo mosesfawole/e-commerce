@@ -15,5 +15,5 @@
   width: 3em;
   background: white;
   opacity: 1;
-  outline: none;
+  outline: none !important;
 }

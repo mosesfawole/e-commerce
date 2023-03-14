@@ -44,8 +44,13 @@ const Header = () => {
           <div className="navs">
             <ul className="hidden absolute top-[35px]  md:flex gap-8">
               {list.map((item, index) => (
-                <li className="cursor-pointer" key={index}>
-                  {item}
+                <li
+                  key={index}
+                  className="hover:border-b-2 pb-[40px] border-[#ff7d1a] "
+                >
+                  <a className="" href="#">
+                    {item}
+                  </a>
                 </li>
               ))}
             </ul>
