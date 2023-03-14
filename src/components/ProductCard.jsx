@@ -151,7 +151,9 @@ function ProductCard(props) {
                 key={i}
                 src={item}
                 alt={i}
-                className="rounded-lg hover:opacity-50 cursor-pointer w-1/4"
+                className={`${
+                  i === index ? "border  border-[#ff7d1a] opacity-50" : ""
+                }  rounded-lg  cursor-pointer w-1/4`}
                 onMouseEnter={() => setIndex(i)}
               />
             ))}
