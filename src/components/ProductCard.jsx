@@ -27,14 +27,27 @@ function ProductCard(props) {
     <div className="mt-12">
       <div className="">
         <div className="">
-          <div className="main md:flex md:p-4  flex-wrap ">
-            <div className="hidden md:flex flex-1  ">
+          <div className="main md:flex  justify-evenly  ">
+            <div className="hidden md:flex md:flex-col md:w-1/3 gap-4  ">
               <img
-                className=" md:rounded-xl max-w-full "
+                className=" md:rounded-xl "
                 loading="lazy"
                 src={images && images[index]}
                 alt={product.name}
               />
+              <div className="small hidden md:grid grid-cols-4 gap-10  ">
+                {images?.map((item, i) => (
+                  <img
+                    key={i}
+                    src={item}
+                    alt={i}
+                    className={`${
+                      i === index ? "border  border-[#ff7d1a] opacity-50" : ""
+                    }  rounded-lg  cursor-pointer  `}
+                    onMouseEnter={() => setIndex(i)}
+                  />
+                ))}
+              </div>
             </div>
             <div className="md:hidden">
               <Splide
@@ -72,14 +85,14 @@ function ProductCard(props) {
               </Splide>
             </div>
 
-            <div className="texts flex flex-col md:flex-1 p-4">
+            <div className="texts flex flex-col md:w-2/5 p-4">
               <p className="title leading-8 md:leading-10 text-sm font-bold uppercase text-[#ff7d1a] ">
                 {product.title}
               </p>
               <p className="name font-bold capitalize text-3xl md:text-4xl  leading-8">
                 {product.name}
               </p>
-              <p className="about mt-4 text-md leading-8 text-[#68707d]">
+              <p className="about mt-4 text-sm leading-8 text-[#68707d]">
                 {product.about}
               </p>
               <div className="prices flex items-center mt-6 p-2 md:p-0">
@@ -103,7 +116,7 @@ function ProductCard(props) {
                 </span>
               </div>
               <div className="buttons md:mt-4 flex mt-4 md:px-0 flex-col md:flex-row gap-4   ">
-                <div className="flex justify-between items-center w-full p-3  rounded-lg bg-[#f7f8fd]">
+                <div className="flex justify-between items-center w-1/2 p-3  rounded-lg bg-[#f7f8fd]">
                   <span
                     className="cursor-pointer"
                     onClick={() => cart.removeOneFromCart(product.id)}
@@ -136,19 +149,6 @@ function ProductCard(props) {
                   Add to Cart
                 </button>
               </div>
-            </div>
-            <div className="small hidden md:flex md:w-full gap-10  ">
-              {images?.map((item, i) => (
-                <img
-                  key={i}
-                  src={item}
-                  alt={i}
-                  className={`${
-                    i === index ? "border  border-[#ff7d1a] opacity-50" : ""
-                  }  rounded-lg  cursor-pointer w-1/6`}
-                  onMouseEnter={() => setIndex(i)}
-                />
-              ))}
             </div>
           </div>
         </div>
