@@ -52,7 +52,7 @@ export function CartProvider({ children }) {
         )
       );
     }
-    toast.success(` item(s) added to cart`);
+    toast.success(` ${quantity + 1} item(s) added to cart`);
   }
 
   const removeOneFromCart = (id) => {
