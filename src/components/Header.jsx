@@ -70,9 +70,14 @@ const Header = () => {
           </div>
         </div>
         <div className="right flex items-center md:justify-center justify-end gap-6">
-          <div className="cart-icon cursor-pointer" onClick={toggleCart}>
-            <p>{productsCount}</p>
+          <div
+            className="cart-icon cursor-pointer relative"
+            onClick={toggleCart}
+          >
             <img src={CartIcon} alt="cart-icon" />
+            <span className="inline-flex text-white text-[9px] rounded-full h-2 items-center justify-center w-3 bg-[#ff7d1a] absolute top-0 right-0">
+              {productsCount}
+            </span>
           </div>
           <div className="avatar cursor-pointer w-1/4">
             <img src={Avatar} alt="avatar" />
