@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { products, images } from "../lib/product";
 import Plus from "../images/icon-plus.svg";
 import Minus from "../images/icon-minus.svg";
@@ -9,11 +9,20 @@ import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
 function ProductCard(props) {
-  const product = props.product;
+  const { product } = props;
 
   const [index, setIndex] = useState(0);
+  const [isInCart, setIsInCart] = useState(false);
   const cart = useContext(CartContext);
-  // const productQuantity = cart.getProductQuantity(product.id);
+  const productQuantity = cart.getProductQuantity(product.id);
+
+  useEffect(() => {
+    if (productQuantity > 0) {
+      setIsInCart(true);
+    } else {
+      setIsInCart(false);
+    }
+  });
   return (
     <div className="mt-12">
       <div className="">
@@ -79,7 +88,7 @@ function ProductCard(props) {
                     ${product.price}
                   </span>
                   <span className="discount text-sm rounded-md   px-2 py-1 text-[#ff7d1a] bg-[#ffede0]">
-                    {product.discount}%
+                    {(product.price / product.initialPrice) * 100}%
                   </span>
                 </div>
                 <div className="second md:hidden">
@@ -94,20 +103,35 @@ function ProductCard(props) {
                 </span>
               </div>
               <div className="buttons md:mt-4 flex mt-4 md:px-0 flex-col md:flex-row gap-4   ">
-                <button className="flex justify-between items-center w-full p-3  rounded-lg bg-[#f7f8fd]">
-                  {/* <span onClick={decQuantity}>
-                      <img src={Minus} alt="minus" />
-                    </span> */}
-                  <p className="font-bold"></p>
-                  {/* <span onClick={incQuantity}>
-                      <img src={Plus} alt="plus" />
-                    </span> */}
-                </button>
+                {productQuantity > 0 ? (
+                  <>
+                    <div className="flex justify-between items-center w-full p-3  rounded-lg bg-[#f7f8fd]">
+                      <span
+                        className="cursor-pointer"
+                        onClick={() => cart.removeOneFromCart(product.id)}
+                      >
+                        <img src={Minus} alt="minus" />
+                      </span>
+                      <p className="font-bold">{productQuantity}</p>
+                      <span
+                        className="cursor-pointer"
+                        onClick={() => cart.addOneToCart(product.id)}
+                      >
+                        <img src={Plus} alt="plus" />
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+
                 <button
                   className="flex w-full items-center gap-4 justify-center  p-3 rounded-lg  bg-[#ff7d1a]  text-white font-bold
                     hover:shadow-2xl hover:opacity-80
                     "
                   type="button"
+                  disabled={isInCart}
+                  onClick={() => cart.addOneToCart(product.id)}
                 >
                   {/* <CartIcon /> */}
                   <img

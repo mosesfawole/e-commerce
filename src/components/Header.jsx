@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Logo from "../images/logo.svg";
 import CartIcon from "../images/icon-cart.svg";
 import Avatar from "../images/image-avatar.png";
@@ -6,11 +6,16 @@ import MenuIcon from "../images/icon-menu.svg";
 import CloseIcon from "../images/icon-close.svg";
 import list from "../lib/menu";
 import Cart from "./Cart";
-
+import { CartContext } from "../context/CartContext";
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const cart = useContext(CartContext);
 
+  const productsCount = cart.items.reduce(
+    (sum, product) => sum + product.quantity,
+    0
+  );
   const handleClickOutside = () => {
     setShowCart(false);
   };
@@ -63,7 +68,7 @@ const Header = () => {
         </div>
         <div className="right flex items-center md:justify-center justify-end gap-6">
           <div className="cart-icon cursor-pointer" onClick={toggleCart}>
-            <p></p>
+            <p>{productsCount}</p>
             <img src={CartIcon} alt="cart-icon" />
           </div>
           <div className="avatar cursor-pointer w-1/4">

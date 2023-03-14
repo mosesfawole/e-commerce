@@ -17,7 +17,9 @@ export function CartProvider({ children }) {
   // { id: 1}
 
   const getProductQuantity = (id) => {
-    cartProducts.find((product) => product.id === id)?.quantity;
+    const quantity = cartProducts.find(
+      (product) => product.id === id
+    )?.quantity;
     if (quantity === undefined) {
       return 0;
     }
@@ -26,10 +28,12 @@ export function CartProvider({ children }) {
 
   function addOneToCart(id) {
     const quantity = getProductQuantity(id);
+    const name = products.map((product) => product.name);
     if (quantity === 0) {
       setCartProducts([
         ...cartProducts,
         {
+          name: name,
           id: id,
           quantity: 1,
         },
