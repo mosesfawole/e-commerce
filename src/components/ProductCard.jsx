@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { products } from "../lib/product";
 import Plus from "../images/icon-plus.svg";
 import Minus from "../images/icon-minus.svg";
+import Next from "../images/icon-next.svg";
+import Previous from "../images/icon-previous.svg";
+
 import CartIcon from "../images/icon-cart.svg";
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
@@ -13,9 +16,30 @@ function ProductCard(props) {
   const { product } = props;
 
   const [index, setIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightBoxOpen, setLightBoxOpen] = useState(false);
+
   const cart = useContext(CartContext);
   const productQuantity = cart.getProductQuantity(product.id);
 
+  const handleOpenLightBox = () => {
+    setLightBoxOpen(true);
+  };
+
+  const handleCloseLightBox = () => {
+    setLightBoxOpen(false);
+  };
+
+  const boxImages = products.map((item) => item.images).flat();
+  useEffect(() => {
+    console.log(boxImages.length);
+  });
+  const handleNext = () => {
+    setLightboxIndex(
+      lightboxIndex === boxImages.length - 1 ? 0 : lightboxIndex + 1
+    );
+    console.log(lightboxIndex);
+  };
   return (
     <div className="md:mt-12">
       <div className="">
@@ -39,9 +63,12 @@ function ProductCard(props) {
                       src={item}
                       alt={i}
                       className={`${
-                        i === index ? "border  border-[#ff7d1a] opacity-50" : ""
+                        i === index
+                          ? "border-2  border-[#ff7d1a] opacity-30"
+                          : ""
                       }  rounded-lg  cursor-pointer  `}
                       onMouseEnter={() => setIndex(i)}
+                      onClick={handleOpenLightBox}
                     />
                   ))}
                 </div>
@@ -156,6 +183,93 @@ function ProductCard(props) {
           </div>
         </div>
       </div>
+      {lightBoxOpen && (
+        <div className="fixed inset-0 z-40 overflow-auto bg-gray-900 bg-opacity-80">
+          {products.map((item, i) => (
+            <div
+              className="hidden md:flex flex-col justify-center items-center   min-h-screen m-auto md:w-1/3 gap-4 relative"
+              key={item.id}
+            >
+              <button
+                onClick={handleCloseLightBox}
+                className="absolute right-0 top-10"
+              >
+                <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+                    fill="#fff"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </button>
+              <div className="">
+                <img
+                  className=" relative md:rounded-xl "
+                  loading="lazy"
+                  src={item.images && item.images[lightboxIndex]}
+                  alt={product.name}
+                />
+                <div className="buttons ">
+                  <button
+                    className="prev absolute top-60 left-0"
+                    onClick={() => {}}
+                  >
+                    <svg
+                      width="12"
+                      height="18"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11 1 3 9l8 8"
+                        stroke="#fff"
+                        strokeWidth="3"
+                        fill="none"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    className="next absolute top-60 right-0"
+                    onClick={handleNext}
+                  >
+                    <svg
+                      width="13"
+                      height="18"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m2 1 8 8-8 8"
+                        stroke="#fff"
+                        strokeWidth="3"
+                        fill="none"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* lightbox desing */}
+              <div className="small  hidden md:grid grid-cols-4 gap-10  ">
+                {item.images?.map((item, i) => (
+                  <img
+                    key={i}
+                    src={item}
+                    alt={i}
+                    className={`${
+                      i === lightboxIndex
+                        ? " border-2  border-[#ff7d1a] opacity-30"
+                        : ""
+                    }  rounded-lg  cursor-pointer  `}
+                    // onMouseEnter={() => setLightboxIndex(i)}
+                    // onClick={handleOpenLightBox}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
