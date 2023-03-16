@@ -31,14 +31,16 @@ function ProductCard(props) {
   };
 
   const boxImages = products.map((item) => item.images).flat();
-  useEffect(() => {
-    console.log(boxImages.length);
-  });
   const handleNext = () => {
     setLightboxIndex(
       lightboxIndex === boxImages.length - 1 ? 0 : lightboxIndex + 1
     );
-    console.log(lightboxIndex);
+  };
+
+  const handlePrev = () => {
+    setLightboxIndex(
+      lightboxIndex === 0 ? boxImages.length - 1 : lightboxIndex - 1
+    );
   };
   return (
     <div className="md:mt-12">
@@ -212,7 +214,7 @@ function ProductCard(props) {
                 <div className="buttons ">
                   <button
                     className="prev absolute top-60 left-0"
-                    onClick={() => {}}
+                    onClick={handlePrev}
                   >
                     <svg
                       width="12"
