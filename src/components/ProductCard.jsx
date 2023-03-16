@@ -196,10 +196,14 @@ function ProductCard(props) {
                 onClick={handleCloseLightBox}
                 className="absolute right-0 top-10"
               >
-                <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="14"
+                  height="15"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="fill-white stroke-white hover:stroke-[#ff7d1a] hover:fill-[#ff7d1a]"
+                >
                   <path
                     d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
-                    fill="#fff"
                     fillRule="evenodd"
                   />
                 </svg>
@@ -211,19 +215,19 @@ function ProductCard(props) {
                   src={item.images && item.images[lightboxIndex]}
                   alt={product.name}
                 />
-                <div className="buttons ">
+                <div className="buttons b ">
                   <button
-                    className="prev absolute top-60 left-0"
+                    className="prev bg-white w-10 h-10  rounded-full flex items-center justify-center absolute top-60 -left-4"
                     onClick={handlePrev}
                   >
                     <svg
                       width="12"
                       height="18"
                       xmlns="http://www.w3.org/2000/svg"
+                      className="stroke-black m-auto hover:stroke-[#ff7d1a] "
                     >
                       <path
                         d="M11 1 3 9l8 8"
-                        stroke="#fff"
                         strokeWidth="3"
                         fill="none"
                         fillRule="evenodd"
@@ -231,17 +235,17 @@ function ProductCard(props) {
                     </svg>
                   </button>
                   <button
-                    className="next absolute top-60 right-0"
+                    className="next bg-white w-10 h-10  rounded-full   absolute top-60 -right-4"
                     onClick={handleNext}
                   >
                     <svg
                       width="13"
                       height="18"
                       xmlns="http://www.w3.org/2000/svg"
+                      className="stroke-black m-auto hover:stroke-[#ff7d1a]"
                     >
                       <path
                         d="m2 1 8 8-8 8"
-                        stroke="#fff"
                         strokeWidth="3"
                         fill="none"
                         fillRule="evenodd"
