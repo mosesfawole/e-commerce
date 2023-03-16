@@ -53,10 +53,11 @@ function ProductCard(props) {
                 key={item.id}
               >
                 <img
-                  className=" md:rounded-xl "
+                  className=" md:rounded-xl cursor-pointer "
                   loading="lazy"
                   src={item.images && item.images[index]}
                   alt={product.name}
+                  onClick={handleOpenLightBox}
                 />
                 <div className="small hidden md:grid grid-cols-4 gap-10  ">
                   {item.images?.map((item, i) => (
@@ -68,9 +69,8 @@ function ProductCard(props) {
                         i === index
                           ? "border-2  border-[#ff7d1a] opacity-30"
                           : ""
-                      }  rounded-lg  cursor-pointer  `}
+                      }  rounded-lg    `}
                       onMouseEnter={() => setIndex(i)}
-                      onClick={handleOpenLightBox}
                     />
                   ))}
                 </div>
