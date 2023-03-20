@@ -2,6 +2,7 @@ import React, { useContext, useRef } from "react";
 import { useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import Delete from "../images/icon-delete.svg";
+import { toast } from "react-hot-toast";
 const Cart = () => {
   const cart = useContext(CartContext);
   const cartItems = cart.items;
@@ -10,6 +11,12 @@ const Cart = () => {
     (sum, product) => sum + product.quantity,
     0
   );
+
+  const lo = cartItems.map((item) => item.id);
+  const handleCheckout = () => {
+    toast.success(`${productsCount} items successfuly purchased`);
+    cart.deleteFromCart(lo);
+  };
   return (
     <div className="cart fixed bg-white left-2 right-2 top-36 h-2/5 md:h-auto md:left-auto md:right-10 md:top-20 md:w-1/4 z-10  shadow-2xl rounded-md ">
       <h1 className="font-bold px-4 py-2">Cart</h1>
@@ -45,7 +52,10 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <button className="rounded-lg w-full p-3 md:p-2 bg-[#ff7d1a] text-white md:text-xs  ">
+                <button
+                  onClick={handleCheckout}
+                  className="rounded-lg w-full p-3 md:p-2 bg-[#ff7d1a] text-white md:text-xs  "
+                >
                   Checkout
                 </button>
               </div>
