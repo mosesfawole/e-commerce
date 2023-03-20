@@ -44,7 +44,7 @@ const Header = () => {
               {list.map((item, index) => (
                 <li
                   key={index}
-                  className="hover:border-b-4 pb-8 border-[#ff7d1a] "
+                  className="hover:border-b-4 pb-6 border-[#ff7d1a] "
                 >
                   <a className="" href="#">
                     {item}

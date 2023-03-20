@@ -194,7 +194,7 @@ function ProductCard(props) {
             >
               <button
                 onClick={handleCloseLightBox}
-                className="absolute right-0 top-10"
+                className="absolute right-0 top-10 hover:str"
               >
                 <svg
                   width="14"
@@ -217,7 +217,7 @@ function ProductCard(props) {
                 />
                 <div className="buttons b ">
                   <button
-                    className="prev bg-white w-10 h-10  rounded-full flex items-center justify-center absolute top-60 -left-4"
+                    className="prev bg-white w-10 h-10  hover:stroke-[#ff7d1a] rounded-full flex items-center justify-center absolute top-60 -left-4"
                     onClick={handlePrev}
                   >
                     <svg
