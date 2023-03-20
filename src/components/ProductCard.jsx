@@ -186,7 +186,7 @@ function ProductCard(props) {
         </div>
       </div>
       {lightBoxOpen && (
-        <div className="fixed inset-0 z-40 overflow-auto bg-gray-900 bg-opacity-80">
+        <div className="hidden md:block md:fixed inset-0 z-40 overflow-auto bg-gray-900 bg-opacity-80">
           {products.map((item, i) => (
             <div
               className="hidden md:flex flex-col justify-center items-center   min-h-screen m-auto md:w-1/3 gap-4 relative"
@@ -208,54 +208,54 @@ function ProductCard(props) {
                   />
                 </svg>
               </button>
-              <div className="">
+              <div className="relative">
                 <img
-                  className=" relative md:rounded-xl "
+                  className=" md:rounded-xl "
                   loading="lazy"
                   src={item.images && item.images[lightboxIndex]}
                   alt={product.name}
                 />
-                <div className="buttons b ">
-                  <button
-                    className="prev bg-white w-10 h-10  hover:stroke-[#ff7d1a] rounded-full flex items-center justify-center absolute top-60 -left-4"
-                    onClick={handlePrev}
+              </div>
+              <div className="buttons ">
+                <button
+                  className="prev bg-white w-10 h-10 absolute -left-5 top-[40%] hover:stroke-[#ff7d1a] rounded-full "
+                  onClick={handlePrev}
+                >
+                  <svg
+                    width="12"
+                    height="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-black m-auto  hover:stroke-[#ff7d1a] "
                   >
-                    <svg
-                      width="12"
-                      height="18"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="stroke-black m-auto hover:stroke-[#ff7d1a] "
-                    >
-                      <path
-                        d="M11 1 3 9l8 8"
-                        strokeWidth="3"
-                        fill="none"
-                        fillRule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    className="next bg-white w-10 h-10  rounded-full   absolute top-60 -right-4"
-                    onClick={handleNext}
+                    <path
+                      d="M11 1 3 9l8 8"
+                      strokeWidth="3"
+                      fill="none"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <button
+                  className="next bg-white w-10 h-10 absolute -right-5 top-[40%] rounded-full"
+                  onClick={handleNext}
+                >
+                  <svg
+                    width="13"
+                    height="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-black m-auto hover:stroke-[#ff7d1a]"
                   >
-                    <svg
-                      width="13"
-                      height="18"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="stroke-black m-auto hover:stroke-[#ff7d1a]"
-                    >
-                      <path
-                        d="m2 1 8 8-8 8"
-                        strokeWidth="3"
-                        fill="none"
-                        fillRule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                    <path
+                      d="m2 1 8 8-8 8"
+                      strokeWidth="3"
+                      fill="none"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </button>
               </div>
 
-              {/* lightbox desing */}
+              {/* lightbox design */}
               <div className="small  hidden md:grid grid-cols-4 gap-10  ">
                 {item.images?.map((item, i) => (
                   <img
