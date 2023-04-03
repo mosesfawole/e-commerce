@@ -57,7 +57,7 @@ Users should be able to:
 ### What I learned
 
 ```html
-<h1>check here haha <a href="./src/context/CartContext.jsx"></a></h1>
+<h1>check CartContext.jsx</h1>
 ```
 
 ### Continued development
