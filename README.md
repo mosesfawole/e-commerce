@@ -68,7 +68,7 @@ Users should be able to:
 
 ### Useful resources
 
-- [Chat GPT](https://www.chat.openai.com) - This helped me solve some issues, I'd recommend to anyone, you can copy the code,but it'much better to learn the logic, why it will work, why it won't. Btw, `ChatGPT` is `mindblowing`, very hepful.
+- [Chat GPT](https://www.chat.openai.com) - This helped me solve some issues, I'd recommend to anyone, try not to copy the code,it'much better to learn the logic, why it will work, why it won't. Btw, `ChatGPT` is `mindblowing`, very hepful.
 
 ## Author
 
